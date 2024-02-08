@@ -1,0 +1,13 @@
+$big:16px;
+$medium:14px;
+$small:12px;
+
+body{
+    font-size: $medium;
+    h1{
+        font-size: $big;
+        .smaller{
+            font-size: $small;
+        }
+    }
+}
