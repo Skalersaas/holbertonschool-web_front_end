@@ -1,0 +1,9 @@
+$no:0px;
+$pmarg:10px;
+body{
+    margin: $no;
+    padding: $no;
+}
+body p{
+    margin:$pmarg;
+}
