@@ -1,0 +1,8 @@
+$color_1:#3d3d3d;
+$color_2:#ff0000;
+body{
+    color:$color_1;
+    .red{
+        color:$color_2;
+    }
+}
