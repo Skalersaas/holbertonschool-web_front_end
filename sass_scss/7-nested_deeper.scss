@@ -6,8 +6,8 @@ body{
     font-size: $medium;
     h1{
         font-size: $big;
-    }
-    h1.smaller{
-        font-size: $small;
+        &.smaller{
+            font-size: $small;
+        }
     }
 }
