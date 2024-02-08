@@ -1,5 +1,5 @@
 @mixin margin($pix){
-    margin:0px $pix 0px $pix;
+    margin:0 $pix 0 $pix;
 }
 body{
     @include margin(10px);
