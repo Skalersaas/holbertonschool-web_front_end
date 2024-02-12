@@ -8,10 +8,8 @@ h1{
     }   
     @media only screen and (max-width: 320px){
         font-size: 14px;
-    }  
-    .small{
-        @media only screen and (max-width: 320px){
+        .small{
             color: #1d1d1d;
-        }   
-    }
+        }
+    }  
 }
