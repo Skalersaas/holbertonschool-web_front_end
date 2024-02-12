@@ -585,7 +585,7 @@
   .tag-list li::after {
     content:", ";
   }
-  .tag-list li::after:last-child {
+  .tag-list li:last-child::after {
     content: "";
   }
   
