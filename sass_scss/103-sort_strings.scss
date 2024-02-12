@@ -21,5 +21,4 @@
   
     @return $list;
   }
-$sorted: quick-sort($list_to_sort);
-@debug "#{$sorted}";
+@debug "#{quick-sort($list_to_sort)}";
