@@ -1,1 +1,3 @@
- @debug "#{sort($list_to_sort)}"
+
+$sorted: sort($list_to_sort);
+@debug "#{$sorted}";
