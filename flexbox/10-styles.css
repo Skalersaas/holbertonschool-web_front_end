@@ -348,7 +348,7 @@
     padding: 10rem 4rem;
   }
   .section-hero .section-category {
-    color:white;
+    color:var(--color-white);
     text-transform: uppercase;
   }
   .hero-homepage {
