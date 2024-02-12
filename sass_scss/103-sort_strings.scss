@@ -1,19 +1,2 @@
-@function sort($list) {
-    $len: length($list);
-    $sorted: false;
-    @while not $sorted {
-       $sorted: true;
-       @for $i from 1 to ($len - 1) {
-          $j: $i + 1;
-          @if nth($list, $i) > nth($list, $j) {
-             $temp: nth($list, $i);
-             $list: set-nth($list, $i, nth($list, $j));
-             $list: set-nth($list, $j, $temp);
-             $sorted: false;
-          }
-       }
-       $len: $len - 1;
-    }
-    @return $list;
- }
- @debug sort($list_to_sort)
+$sorted: sort($list_to_sort);
+ @debug sort($sorted)
