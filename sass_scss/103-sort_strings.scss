@@ -45,6 +45,7 @@ $sort-order: a b c d e f g h i j k l m n o p
     } 
     @return $list; 
 } 
-@each $name in sort($list_to_sort){
+$sorted:sort($list_to_sort);
+@each $name in $sorted{
     @debug $name;
 }
