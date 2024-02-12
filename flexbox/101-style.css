@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    position: fixed;
+    left:50%;
+    transform: translateX(-50%);
+    align-items: baseline;
+}
+.box {
+    color:white;
+}
+.box1 {
+    background-color: green;
+    font-size: 30px;
+    height: 75px;
+    line-height: 75px;
+    width: 120px;
+    text-indent: 30px;
+
+}
+.box2 {
+    background-color: blue;
+    font-size: 75px;
+    height: 120px;
+    line-height: 120px;
+    width: 240px;
+    text-indent:30px;
+}
+.box3 {
+    background-color: gray;
+    font-size: 120px;
+    line-height: 200px;
+    width: 360px;
+    text-indent:50px;
+}
+.box4 {
+    background-color: purple;
+    font-size: 75px;
+    height: 120px;
+    line-height: 120px;
+    width: 240px;
+    text-indent:30px;
+}
+.box5 {
+    background-color: orange;
+    font-size: 30px;
+    height: 75px;
+    line-height: 75px;
+    width: 120px;
+    text-indent: 30px;
+}
