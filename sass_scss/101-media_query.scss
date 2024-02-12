@@ -1,0 +1,6 @@
+h1{
+    font-size: 20px;
+    @if $max-width==320px{
+        font-size: 14px;
+    }
+}
