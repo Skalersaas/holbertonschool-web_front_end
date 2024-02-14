@@ -1,7 +1,9 @@
+// Write a Sass file that sorts the variable $list_to_sort and prints the sorted list in the debug output.
+
+
 @import '103-sort_list.scss';
 
 $sort-order: a b c d e f g h i j k l m n o p q r s t u v w x y z !default;
-$order: $sort-order;
 
 @function compare($string-a, $string-b, $sort-order) {
 $string-a: to-lower-case($string-a + unquote("")); 
@@ -14,7 +16,7 @@ $string-b: to-lower-case($string-b + unquote(""));
     $char-b: str-slice($string-b, $i, $i); 
     
     @if $char-a and $char-b and index( 
-            $order, $char-a) != index($sort-order, $char-b) { 
+            $sort-order, $char-a) != index($sort-order, $char-b) { 
     @return index( 
             $sort-order, $char-a) < index($sort-order, $char-b); 
     } 

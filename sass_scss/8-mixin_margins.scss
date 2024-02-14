@@ -1,3 +1,8 @@
+// Write a Sass file that assigns:
+
+// Margin left and right at 10px to body tags
+// Margin left and right at 15px to div tags
+// You must use a mixin
 @mixin margin($pix){
     margin-left: $pix;
     margin-right:$pix;
