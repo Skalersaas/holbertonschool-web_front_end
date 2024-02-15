@@ -1,3 +1,24 @@
+:root{
+    --fs-small:30px;
+    --fs-medium:50px;
+    --fs-big:120px;
+
+    --w-small:120px;
+    --w-medium:180px;
+    --w-big:340px;
+
+    --h-small:75px;
+    --h-medium:110px;
+    --h-big:200px;    
+    
+    --lh-small:75px;
+    --lh-medium:110px;
+    --lh-big:200px;
+
+    --t-small:30px;
+    --t-medium:40px;
+    --t-big:40px;
+}
 .container {
     display: flex;
     position: fixed;
@@ -10,41 +31,57 @@
 }
 .box1 {
     background-color: green;
-    font-size: 30px;
-    height: 75px;
-    line-height: 75px;
-    width: 120px;
-    text-indent: 30px;
+    font-size: var(--fs-small);
+
+    height: var(--h-small);
+    line-height: var(--lh-small);
+
+    width: var(--w-small);
+
+    text-indent: var(--t-small);
 
 }
 .box2 {
     background-color: blue;
-    font-size: 75px;
-    height: 120px;
-    line-height: 120px;
-    width: 240px;
-    text-indent:30px;
+    font-size: var(--fs-medium);
+
+    height: var(--h-medium);
+    line-height: var(--lh-medium);
+
+    width: var(--w-medium);
+
+    text-indent:var(--t-medium);
 }
 .box3 {
     background-color: gray;
-    font-size: 120px;
-    line-height: 200px;
-    width: 360px;
-    text-indent:50px;
+    font-size: var(--fs-big);
+
+    height: var(--h-big);
+    line-height: var(--lh-big);
+
+    width: var(--w-big);
+
+    text-indent:var(--t-big);
 }
 .box4 {
     background-color: purple;
-    font-size: 75px;
-    height: 120px;
-    line-height: 120px;
-    width: 240px;
-    text-indent:30px;
+    font-size: var(--fs-medium);
+
+    height: var(--h-medium);
+    line-height: var(--lh-medium);
+
+    width: var(--w-medium);
+
+    text-indent:var(--t-medium);
 }
 .box5 {
     background-color: orange;
-    font-size: 30px;
-    height: 75px;
-    line-height: 75px;
-    width: 120px;
-    text-indent: 30px;
+    font-size: var(--fs-small);
+
+    height: var(--h-small);
+    line-height: var(--lh-small);
+
+    width: var(--w-small);
+
+    text-indent: var(--t-small);
 }
