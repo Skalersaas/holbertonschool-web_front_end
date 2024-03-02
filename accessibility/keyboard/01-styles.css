@@ -698,10 +698,12 @@ ul.row {
     display: block;
     padding: 2rem 1rem 0 1rem;
     opacity: 1;
+  }
+  .card-work .card-title a:focus, .card-work:hover .card-title a {
+    opacity: 1;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
   }
-
   .card-work:hover .card-image {
     transform: none;
   }
