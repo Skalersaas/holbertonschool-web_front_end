@@ -316,7 +316,7 @@ a {
             font-size: 57%;
         }
     }
-    @media screen and (min-width:481px) and (max-width:767px {
+    @media screen and (min-width:481px) and (max-width:767px) {
         html {
             font-size: 60%;
         }
@@ -640,7 +640,16 @@ ul.row {
     flex-direction: row-reverse;
 }
 
-
+  
+@media screen and (max-width:767px) {
+    .root {
+      --section-padding:5rem 1.5rem;
+      --section-body-padding:2rem 0 0;
+    }
+    .section-latest-news .row {
+      flex-direction: column;
+    }
+  }
 /* Section SERVICES
       ============================= */
 

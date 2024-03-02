@@ -1,4 +1,4 @@
-﻿/* SUMMARY
+/* SUMMARY
 1. GLOBAL
 2. LAYOUT
 3. SECTION
@@ -532,9 +532,21 @@ ul.row {
     display: block;
 }
 
-    .social-link > svg {
-        fill: var(--text-color);
+.social-link > svg {
+    fill: var(--text-color);
+}
+
+@media screen and (max-width:767px) {
+    :root{
+        --footer-padding:5rem 2rem 1rem;
+    }    
+    .footer .social.nav, .footer .footer-nav {
+        text-align: center;
     }
+    .social.nav li+li {
+        padding-left: 2rem;
+    }
+}
 
 /*** 3. SECTION ***/
 
@@ -620,7 +632,9 @@ ul.row {
     justify-content: center;
     min-height: 35vh;
 }
-
+.article-page .section-hero {
+    padding-top: 5rem;
+}
 @media screen and (max-width:767px) {
     .section-hero {
         margin: -0.1rem 0;
