@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <meta charset="utf-8" />
+        <title>Task 0</title>
+        <script type="application/javascript">
+            function createFamilyTree(){
+                function createHeadRow(){
+                    return "<tr><th>Firstname</th><th>Lastname</th>";
+                }
+                $("body").append("<table>");
+                $("table").append("<thead>","<tbody>");
+                $("thead").append(createHeadRow());
+            }
+            function addNewMember(firstName, lastName){
+                let td = `<tr><td>${firstName}</td><td>${lastName}</td><td class="x">(x)</td></tr>`;
+                $("tbody").append(td);
+                $(".x").css("background","orange");
+                $(".x").click(
+                    function(){
+                        $(this).closest("tr").remove();
+                    }
+                );
+            }
+            function Setup(){
+                createFamilyTree();
+                addNewMember("Guillaume","Salva");
+                addNewMember("Arielle","Snizt");
+                addNewMember("Fanette","Snizt");
+                addNewMember("Gerard","Snizt");
+                addNewMember("Victor","Salva");
+            }
+        </script>
+    </head>
+
+    <body>
+        </table>
+    </body>
+
+</html>

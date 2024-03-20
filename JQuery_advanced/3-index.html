@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <meta charset="utf-8" />
+        <title>Task 0</title>
+        <script type="application/javascript">
+            function createFamilyTree(){
+                function createRow(name){
+                    return `<tr><td>${name}</td><td>Salva</td></tr>`;
+                }
+                function createHeadRow(){
+                    return "<tr><th>Firstname</th><th>Lastname</th>";
+                }
+                $("body").append("<table>");
+                $("table").append("<thead>","<tbody>");
+                $("thead").append(createHeadRow());
+                $("tbody").append(createRow("Guillaume"),createRow("Paulette"),createRow("Antoine"));
+            }
+            createFamilyTree();
+        </script>
+    </head>
+
+    <body>
+        </table>
+    </body>
+
+</html>
