@@ -14,9 +14,12 @@
                 $("table").append("<thead>","<tbody>");
                 $("thead").append(createHeadRow());
             }
-            function addNewMember(firstName, lastName){
+            function addNewMember(firstName, lastName, position){
                 let td = `<tr><td>${firstName}</td><td>${lastName}</td><td class="x">(x)</td></tr>`;
-                $("tbody").append(td);
+                if(position=="before")
+                    $("tbody").prepend(td);
+                else 
+                    $("tbody").append(td); 
                 $(".x").css("background","orange");
                 $(".x").click(
                     function(){
@@ -24,19 +27,39 @@
                     }
                 );
             }
-            function Setup(){
-                createFamilyTree();
-                addNewMember("Guillaume","Salva");
-                addNewMember("Arielle","Snizt");
-                addNewMember("Fanette","Snizt");
-                addNewMember("Gerard","Snizt");
-                addNewMember("Victor","Salva");
+            function createForm(){
+                $("body").prepend(
+                    $("<input>").attr({
+                        type:"text"
+                    }),
+                    $("<input>").attr({
+                        type:"text"
+                    }),
+                    $("<select>").attr({
+                        name:"select"
+                    }),
+                    $("<input>").attr({
+                        type:"submit",
+                        id:"sub"
+                    })
+                );
+                $("select[name='select']").append(
+                    '<option value="before">Before</option>',
+                    '<option value="after">After</option>'
+                );
+                $("#sub").click(function(){
+                    addNewMember($("body input").first().val(),$("body input:nth-of-type(2)").val(),$("select[name='select']").val());
+                });
             }
+            
+            $(document).ready(function(){
+                createFamilyTree();
+                createForm();
+            });
         </script>
     </head>
 
     <body>
-        </table>
     </body>
 
 </html>

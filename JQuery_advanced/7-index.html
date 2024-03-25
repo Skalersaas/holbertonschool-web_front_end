@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <meta charset="utf-8" />
+        <title>Task 0</title>
+        <script type="application/javascript">
+            function createSearchForm(){
+                $("body").append(
+                    $("<input>").attr({
+                        type:"text"
+                    }),
+                    $("<input>").attr({
+                        type:"submit",
+                    }),
+                    $("<ul>")
+                );
+                $("body input:nth-of-type(2)").click(function(){
+                    queryWikipedia($("body input").first().val());    
+                });
+            }
+            function addNewArticle(id,title,snippet){
+                $("ul").append(
+                    $("<li>").append(
+                        $("<p>").append(
+                            $("<span>").append(`${id} -`,$("<b>").append(title))),
+                        $("<p>").append(snippet)
+                ));
+            }
+            function queryWikipedia(search){
+                if(search!=="")
+                {
+                    $.ajax({
+                    dataType: "json",
+                    url: `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${search}&format=json&callback=?`,
+                    success: function (res) {
+                        if (res.error) return console.log("Empty search!")
+                        res.query.search.forEach(({ pageid, title, snippet }) =>
+                        addNewArticle(pageid, title, snippet)
+                        )
+                    },
+                    })
+                }
+            }
+            $(document).ready(function(){
+                createSearchForm();
+            });
+        </script>
+    </head>
+
+    <body>
+    </body>
+
+</html>

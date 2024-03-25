@@ -7,23 +7,27 @@
         <title>Task 0</title>
         <script type="application/javascript">
             function createFamilyTree(){
-                function createRow(name){
-                    return `<tr><td>${name}</td><td>Salva</td></tr>`;
-                }
-                function createHeadRow(){
-                    return "<tr><th>Firstname</th><th>Lastname</th>";
-                }
-                $("body").append("<table>");
-                $("table").append("<thead>","<tbody>");
-                $("thead").append(createHeadRow());
-                $("tbody").append(createRow("Guillaume"),createRow("Paulette"),createRow("Antoine"));
+                $("body").append(
+                $("<thead>").append(
+                    $("<tr>").
+                        append($("<th>").append("Firstname"),$("<th>").append("LastName"))),
+                $("<tbody>").append(
+                    $("<tr>").
+                        append($("<td>").append("Guillaume"),$("<td>").append("Salva")),
+
+                    $("<tr>").
+                        append($("<td>").append("Paulette"),$("<td>").append("Salva")),  
+
+                    $("<tr>").
+                        append($("<td>").append("Antoine"),$("<td>").append("Salva"))));
             }
-            createFamilyTree();
+            $(document).ready(function(){
+                createFamilyTree();
+            });
         </script>
     </head>
 
     <body>
-        </table>
     </body>
 
 </html>
