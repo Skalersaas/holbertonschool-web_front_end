@@ -17,8 +17,9 @@
                     $("<ul>"),
                     $("<ul>").attr({id:"pagination"})
                 );
-                $("#pagination").css("list-style","none");
-                $("#pagination").css("display","flex");
+                $("#pagination").css({
+                    display:"flex"
+                });
                 $("body input:nth-of-type(2)").click(function(){
                     queryWikipedia($("body input").first().val());    
                 });
@@ -26,32 +27,41 @@
             function addNewArticle(id,title,snippet){
                 const li =
                 `<li>` + `<p><span>${id} - <b>${title}</b></span>` + `<p>${snippet}`
-                $("body ul").first().append(li).css("list-style", "none")
+                $("body ul").first().append(li)
             }
             function buildPagination(numberOfItems,itemsPerPage,currentOffset){
-                $("#pagination").html = "";
+                $("#pagination").empty();
                 for(let i=0;i<numberOfItems/itemsPerPage;i++){
                     $("#pagination").append(`<a><li>${i + 1}</li></a>`);
                 }
+                $("ul:nth-of-type(2) li").css({
+                    display:'inline',
+                    marginLeft:"10px",
+                    cursor:"pointer"
+                });
+                $(`a:nth-of-type(${currentOffset||1})`).css("font-weight", "bold")
+                $("a").click(function(){
+                    let num = this.children["0"].innerText;
+                    queryWikipedia($("input:nth-of-type(1)").val(),num);
+                });
             }
-            function queryWikipedia(search){
+            function queryWikipedia(search,offset=0){
                 if(search!=="")
                 {
-                    offset = 0;
                     $.ajax({
                     dataType: "json",
-                    url: `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${search}&format=json&callback=?`,
+                    url: `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${search}&sroffset=${offset*10}&format=json&callback=?`,
                     success: function (res) {
                         if (res.error) return console.log("Empty search!")
+                        $("ul").first().empty();
                         res.query.search.forEach(({ pageid, title, snippet, offset }) =>
                         addNewArticle(pageid, title, snippet)
                         )
                         let TH = res.query.searchinfo.totalhits;
                         buildPagination(TH, 10, offset);
-                
-                    },
+                    }
                     });
-                }
+                }62406201 
             }
             $(document).ready(function(){
                 createSearchForm();
