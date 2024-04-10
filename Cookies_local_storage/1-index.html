@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function setCookies(){
+                document.cookie = `firstname=${document.querySelector('#firstname').value}`;
+                document.cookie = `email=${document.querySelector('#email').value}`;
+                let d = new Date();
+                d.setDate(d.getDate()+10);
+                document.cookie = `expires=${d.toUTCString()}`;
+                console.log(document.cookie);
+            }
+            
+            function showCookies(){
+                let node = document.createElement("p");
+                let cookies = document.cookie.split(';')
+                
+                node.append("Cookies: ")
+                for(let i = 0;i<2;i++){
+                    node.append(cookies[i]);
+                    if(i!=1) node.append(';')
+                }
+                document.body.appendChild(node);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Login to the website</h1>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="email" id="email" placeholder="Email">
+        <button onclick="setCookies()">Log me in</button>
+        <h1>Cookies</h1>
+        <button onclick="showCookies()">Show the cookies</button>
+    </body>
+</html>

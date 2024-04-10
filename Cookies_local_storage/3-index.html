@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function setCookies(){
+                document.cookie = `firstname=${document.querySelector('#firstname').value}`;
+                document.cookie = `email=${document.querySelector('#email').value}`;
+                let d = new Date();
+                d.setDate(d.getDate()+10);
+                document.cookie = `expires=${d.toUTCString()}`;
+                showWelcomeMessageOrForm()
+            }
+            
+            function showCookies(){
+                let node = document.createElement("p");
+                node.append("Email: ",getCookie("email")," - Firstname: ",getCookie("firstname"));                
+                document.body.appendChild(node)
+            }
+            function getCookie(name){
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                else return ""
+            }
+            function showForm(){
+                let form = document.getElementById("form");
+                form.style="display:block"
+            }
+            function hideForm(){
+                let form = document.getElementById("form");
+                form.style="display:none";
+            }
+            function deleteCookiesAndShowForm(){
+                document.cookie="firstname=";
+                document.cookie="email=";
+                showForm()
+                document.body.lastChild.remove();
+            }
+            function showWelcomeMessageOrForm(){
+                if(getCookie('firstname')=="" || getCookie('email')== ""){
+                    showForm();
+                }
+                else{
+                    hideForm()
+                    let msg = document.createElement("h1");
+                    msg.append("Welcome: ",getCookie("firstname"));
+                    let logout = document.createElement('a')
+                    logout.style= "font-weight: normal; font-style: italic; text-decoration: none; margin-left:10px";
+                    logout.addEventListener("click",deleteCookiesAndShowForm)
+                    logout.append("(logout)")
+                    msg.append(logout);
+                    document.body.appendChild(msg);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="form">
+            <h1>Login to the website</h1>
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="email" id="email" placeholder="Email">
+            <button onclick="setCookies()">Log me in</button>
+        </div>
+    </body>
+</html>
