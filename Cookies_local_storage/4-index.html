@@ -3,18 +3,9 @@
     <head>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
         <script>
-            function setCookies(){
-                document.cookie = `firstname=${document.querySelector('#firstname').value}`;
-                document.cookie = `email=${document.querySelector('#email').value}`;
-                let d = new Date();
-                d.setDate(d.getDate()+10);
-                document.cookie = `expires=${d.toUTCString()}`;
-                showWelcomeMessageOrForm()
-            }
-            
             function showCookies(){
                 let node = document.createElement("p");
-                node.append("Email: ",getCookie("email")," - Firstname: ",getCookie("firstname"));                
+                node.append("Email: ",Cookies.get("email")," - Firstname: ",Cookies.get("firstname"));                
                 document.body.appendChild(node)
             }
             function showForm(){
@@ -23,7 +14,7 @@
             }
             function hideForm(){
                 let form = document.getElementById("form");
-                form.style="display:none";
+                form.style = "display:none";
             }
             function deleteCookiesAndShowForm(){
                 Cookies.remove('firstname');
@@ -31,21 +22,28 @@
                 showForm()
                 document.body.lastChild.remove();
             }
+            function setCookiesAndShowWelcomeMessage(){
+                Cookies.set('firstname', document.getElementById("firstname").value, {expires:10}); 
+                Cookies.set('email', document.getElementById("email").value, {expires:10}); 
+                showWelcomeMessageOrForm();
+            }
             function showWelcomeMessageOrForm(){
-                if(getCookie('firstname')=="" || getCookie('email')== ""){
-                    showForm();
-                }
-                else{
+                if(Cookies.get('firstname') && Cookies.get('email')){
                     hideForm()
                     let msg = document.createElement("h1");
-                    msg.append("Welcome: ",getCookie("firstname"));
+                    msg.append("Welcome: ", Cookies.get("firstname"));
+
                     let logout = document.createElement('a')
-                    logout.style= "font-weight: normal; font-style: italic; text-decoration: none; margin-left:10px";
-                    logout.addEventListener("click",deleteCookiesAndShowForm)
+                    logout.style = "font-weight: normal; font-style: italic; text-decoration: none; margin-left:10px";
+                    logout.addEventListener("click", deleteCookiesAndShowForm)
                     logout.append("(logout)")
                     msg.append(logout);
                     document.body.appendChild(msg);
                 }
+                else showForm()
+            }
+            window.onload=function(){
+                showWelcomeMessageOrForm();
             }
         </script>
     </head>
@@ -54,7 +52,7 @@
             <h1>Login to the website</h1>
             <input type="text" id="firstname" placeholder="Firstname">
             <input type="email" id="email" placeholder="Email">
-            <button onclick="setCookies()">Log me in</button>
+            <button onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
         </div>
     </body>
 </html>

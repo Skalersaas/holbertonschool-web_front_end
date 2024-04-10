@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+        <script>
+            let avaibleItems = ["Shampoo","Soap","Sponge","Water"];
+            function isSessionStorageAvailable(){
+                var test = 'test';
+                try {
+                    sessionStorage.setItem(test, test);
+                    sessionStorage.removeItem(test);
+                    return true;
+                } catch(e) {
+                    return false;
+                }
+            }
+            function addItemToCart(item){
+                sessionStorage.setItem(item, true);
+            }
+            function createStore(){
+                let list = document.createElement("ul");
+                for(let i in avaibleItems){
+                    let item = document.createElement("li");
+                    item.append(avaibleItems[i]);
+                    item.onclick = function() {
+                        addItemToCart(avaibleItems[i]);
+                    }
+                    list.appendChild(item);
+                }
+                document.body.appendChild(list);
+            }
+            function displayCart(){
+                let iCount = 0;
+                for(let i  =0 ;i<sessionStorage.length;i++){
+                    if(sessionStorage.getItem(sessionStorage.key(i)))
+                        iCount++;
+                }
+                if (iCount > 0){
+                    let msg = document.createElement("p");
+                    msg.append("You previously had ",iCount," items in your cart");
+                    document.body.appendChild(msg);
+                }
+            }
+            window.onload = function(){
+                if(isSessionStorageAvailable()){
+                    createStore();
+                    displayCart()
+                }
+                else {
+                    alert("Sorry your browser does not support Web storage. Try again with a better one");
+                }
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
